@@ -75,16 +75,10 @@ if "messages" not in st.session_state:
     st.session_state["messages"] = [
         {"role": "assistant", "content": "Hello 👋, How can I help you today?"}
     ]
-if "output_lang" not in st.session_state:
-    st.session_state["output_lang"] = "en"  # Default output language is English
 
 # Display previous messages
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
-
-# Language selection for the output
-output_lang = st.selectbox("Select your output language:", list(SUPPORTED_LANGUAGES.values()), index=0)
-st.session_state["output_lang"] = list(SUPPORTED_LANGUAGES.keys())[list(SUPPORTED_LANGUAGES.values()).index(output_lang)]
 
 if prompt := st.chat_input():
     # Append the user message to the session state
@@ -118,13 +112,13 @@ if prompt := st.chat_input():
                 "Please ask about crops, farming, soil, or anything related to agriculture."
             )
         
-        # Translate the response back to the selected output language
-        translated_response = translate_back(st.session_state["output_lang"], response)
+        # Translate the response back to the original language
+        translated_response = translate_back(original_lang, response)
 
         # Append the response to the session state
         st.session_state.messages.append({"role": "assistant", "content": translated_response})
         st.chat_message("assistant").write(translated_response)
 
-        # Generate and play audio of the translated response in the selected output language
-        audio_file_path = text_to_audio(translated_response, st.session_state["output_lang"])
+        # Generate and play audio of the translated response in the original language
+        audio_file_path = text_to_audio(translated_response, original_lang)
         st.audio(audio_file_path)
