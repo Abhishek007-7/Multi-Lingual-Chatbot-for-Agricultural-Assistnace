@@ -1,1 +1,2 @@
 duckduckgo_search
+langdetect
