@@ -28,7 +28,30 @@ BASIC_CHATBOT_RESPONSES = {
 }
 
 # Keywords that indicate agriculture-related questions
-AGRICULTURE_KEYWORDS = ['crop', 'farming', 'soil', 'irrigation', 'pests', 'harvest', 'fertilizer', 'weather', 'yield', 'planting', 'seeds', 'agriculture']
+# Expanded list of agriculture-related keywords
+AGRICULTURE_KEYWORDS = [
+    'crop', 'soil', 'fertilizer', 'irrigation', 'pesticide', 'harvest', 'farming', 
+    'agriculture', 'planting', 'seeds', 'weather', 'yield', 'farm', 'livestock', 
+    'disease', 'pest', 'organic', 'agronomy', 'ploughing', 'manure', 'compost', 
+    'tilling', 'land preparation', 'mulching', 'drip irrigation', 'sprinkler irrigation', 
+    'rain-fed irrigation', 'water management', 'canal irrigation', 'flood irrigation', 
+    'furrow irrigation', 'water conservation', 'crop rotation', 'herbicide', 'fungicide', 
+    'weed control', 'dairy farming', 'poultry farming', 'grazing', 'veterinary care', 
+    'sustainable farming', 'permaculture', 'agroecology', 'green manure', 'cover crops', 
+    'no-till farming', 'conservation agriculture', 'plant health', 'crop disease', 
+    'soil erosion', 'plant breeding', 'pollination', 'agricultural biotechnology', 
+    'drought', 'rainfall', 'climate change', 'monsoon', 'frost', 'heat stress', 
+    'tractor', 'plough', 'tiller', 'harvester', 'seed drill', 'irrigation pump', 
+    'farm equipment', 'machinery', 'threshing', 'dryland farming', 'wetland farming', 
+    'subsistence farming', 'commercial farming', 'mixed farming', 'monoculture', 
+    'polyculture', 'intercropping', 'terracing', 'agroforestry', 'horticulture', 
+    'floriculture', 'apiculture', 'sericulture', 'fish farming', 'foot and mouth disease', 
+    'mastitis', 'avian influenza', 'rinderpest', 'Newcastle disease', 'farm subsidies', 
+    'agricultural loans', 'crop insurance', 'commodity prices', 'rural development', 
+    'precision farming', 'smart farming', 'vertical farming', 'greenhouse farming', 
+    'hydroponics', 'aeroponics', 'climate-smart agriculture', 'storage', 'processing', 
+    'packaging', 'transportation', 'marketing', 'supply chain', 'food safety'
+]
 
 # Function to detect language and translate text
 def detect_and_translate(text):
