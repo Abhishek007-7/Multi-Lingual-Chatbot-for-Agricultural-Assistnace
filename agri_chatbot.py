@@ -64,7 +64,7 @@ def is_agriculture_related(query):
 
 # Function to check if the query is a basic conversation
 def is_basic_conversation(query):
-    query = query.lower()
+    query = query.lower().strip()  # Normalize query
     return query in BASIC_CONVERSATION
 
 # Streamlit app
@@ -105,7 +105,7 @@ if prompt := st.chat_input():
     else:
         # Check if the query is a basic conversation
         if is_basic_conversation(translated_prompt):
-            response = BASIC_CONVERSATION[translated_prompt]
+            response = BASIC_CONVERSATION[translated_prompt.lower().strip()]
         # Check if the query is agriculture-related
         elif is_agriculture_related(translated_prompt):
             # Chat with DuckDuckGo AI
