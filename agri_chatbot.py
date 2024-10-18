@@ -13,7 +13,8 @@ SUPPORTED_LANGUAGES = {
     "ml": "Malayalam",
     "te": "Telugu",
     "ta": "Tamil",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "be": "Bengali"
 }
 
 # Basic chatbot functions (greetings, farewells, etc.)
