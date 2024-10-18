@@ -22,10 +22,14 @@ BASIC_CHATBOT_RESPONSES = {
     "hi": "Hi there! How can I help you?",
     "hey": "Hey there! How can I help you?",
     "bye": "Goodbye! Have a great day!",
-    "what is your name": "I am your agricultural chatbot, here to assist you with farming and related queries.",
+    "what is your name": "My name is Agri-Bot, here to assist you with farming and related queries.",
     "who are you": "I am a chatbot designed to assist you with agriculture-related information.",
     "how are you": "I'm just a program, but thanks for asking! How can I assist you?",
-    "where are you from": "I exist in the cloud to help you with your agricultural needs."
+    "where are you from": "I exist in the cloud to help you with your agricultural needs.",
+    "thank you": "You're welcome! If you have more questions, feel free to ask.",
+    "thanks": "No problem! I'm here to help.",
+    "help": "I can assist you with questions related to agriculture, farming, crops, soil, and more!",
+    "what can you do": "I can answer your agriculture-related questions and provide helpful information."
 }
 
 # Keywords that indicate agriculture-related questions
