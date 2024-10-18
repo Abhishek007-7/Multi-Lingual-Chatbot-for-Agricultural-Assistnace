@@ -52,5 +52,3 @@ streamlit run app.py
 This project is licensed under the MIT License.
 
 ---
-
-This README file can be customized as needed before publishing to GitHub!
