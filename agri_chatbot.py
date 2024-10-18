@@ -20,7 +20,7 @@ SUPPORTED_LANGUAGES = {
 BASIC_CHATBOT_RESPONSES = {
     "hello": "Hello! How can I assist you today?",
     "hi": "Hi there! How can I help you?",
-    "hey": "Hi there! How can I help you?",
+    "hey": "Hey there! How can I help you?",
     "bye": "Goodbye! Have a great day!",
     "what is your name": "I am your agricultural chatbot, here to assist you with farming and related queries.",
     "who are you": "I am a chatbot designed to assist you with agriculture-related information.",
