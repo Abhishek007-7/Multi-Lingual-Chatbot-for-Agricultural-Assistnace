@@ -3,7 +3,6 @@ from duckduckgo_search import DDGS
 from langdetect import detect
 from deep_translator import GoogleTranslator
 from gtts import gTTS
-import os
 import tempfile
 
 # Supported languages
@@ -14,27 +13,6 @@ SUPPORTED_LANGUAGES = {
     "te": "Telugu",
     "ta": "Tamil",
     "kn": "Kannada"
-}
-
-# Agriculture-related keywords for filtering queries
-AGRICULTURE_KEYWORDS = [
-    "crop", "soil", "fertilizer", "irrigation", "pesticide", "harvest", 
-    "farming", "agriculture", "planting", "seeds", "weather", "yield", "farm", 
-    "livestock", "disease", "pest", "organic", "agronomy"
-]
-
-# Basic chatbot conversation keywords and responses
-BASIC_CONVERSATION = {
-    "hi": "Hello! How can I assist you today?",
-    "hello": "Hello! How can I assist you today?",
-    "bye": "Goodbye! Have a great day!",
-    "goodbye": "Goodbye! Have a great day!",
-    "what is your name": "I’m your agricultural assistant chatbot!",
-    "where are you from": "I’m a virtual assistant here to help with agricultural queries.",
-    "thank you": "You're welcome! I'm happy to help.",
-    "thanks": "You're welcome! Feel free to ask more questions!",
-    "what can you do": "I can assist with agriculture-related queries and basic conversation!",
-    "how can you help": "I can provide you with information related to farming, crops, soil, and more!"
 }
 
 # Function to detect language and translate text
@@ -53,19 +31,10 @@ def translate_back(original_lang, text):
 # Function to generate audio from text in the original language
 def text_to_audio(text, lang):
     tts = gTTS(text=text, lang=lang)
+    # Create a temporary file to save the audio
     temp_audio_file = tempfile.mktemp(suffix=".mp3")  # Generate a unique temporary file name
     tts.save(temp_audio_file)  # Save audio to the temporary file
     return temp_audio_file
-
-# Function to check if the query is agriculture-related
-def is_agriculture_related(query):
-    query = query.lower()
-    return any(keyword in query for keyword in AGRICULTURE_KEYWORDS)
-
-# Function to check if the query is a basic conversation
-def is_basic_conversation(query):
-    query = query.lower().strip()  # Normalize query
-    return query in BASIC_CONVERSATION
 
 # Streamlit app
 st.title("Agricultural Chatbot 💬")
@@ -97,23 +66,14 @@ if prompt := st.chat_input():
         st.session_state.messages.append({"role": "assistant", "content": unsupported_msg})
         st.chat_message("assistant").write(unsupported_msg)
     else:
-        # Check if the query is a basic conversation
-        if is_basic_conversation(translated_prompt):
-            response = BASIC_CONVERSATION[translated_prompt.lower().strip()]
-        # Check if the query is agriculture-related
-        elif is_agriculture_related(translated_prompt):
-            # Chat with DuckDuckGo AI
-            results = DDGS().chat(translated_prompt, model='claude-3-haiku')
-            response = results
-        else:
-            # Provide a generic response for non-agriculture queries
-            response = (
-                "I can only assist with agriculture-related queries. "
-                "Please ask about crops, farming, soil, or anything related to agriculture."
-            )
-        
+        # Append the translation to the session state
+        st.session_state.messages.append({"role": "assistant", "content": f"Translated to English: {translated_prompt}"})
+
+        # Chat with DuckDuckGo AI
+        results = DDGS().chat(translated_prompt, model='claude-3-haiku')
+
         # Translate the response back to the original language
-        translated_response = translate_back(original_lang, response)
+        translated_response = translate_back(original_lang, results)
 
         # Append the response to the session state
         st.session_state.messages.append({"role": "assistant", "content": translated_response})
@@ -121,4 +81,6 @@ if prompt := st.chat_input():
 
         # Generate and play audio of the translated response in the original language
         audio_file_path = text_to_audio(translated_response, original_lang)
+
+        # Streamlit audio player
         st.audio(audio_file_path)
