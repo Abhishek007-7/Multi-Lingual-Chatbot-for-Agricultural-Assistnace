@@ -17,6 +17,7 @@ This is a multilingual chatbot designed to assist users with agriculture-related
 - Telugu
 - Tamil
 - Kannada
+- Bengali
 
 ## Prerequisites
 
