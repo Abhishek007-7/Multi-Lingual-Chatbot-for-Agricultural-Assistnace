@@ -55,7 +55,7 @@ AGRICULTURE_KEYWORDS = [
     'agricultural loans', 'crop insurance', 'commodity prices', 'rural development',
     'precision farming', 'smart farming', 'vertical farming', 'greenhouse farming',
     'hydroponics', 'aeroponics', 'climate-smart agriculture', 'storage', 'processing',
-    'packaging', 'transportation', 'marketing', 'supply chain', 'food safety'
+    'packaging', 'transportation', 'marketing', 'supply chain', 'food safety', 'grow'
 ]
 
 # Function to detect language and translate text
